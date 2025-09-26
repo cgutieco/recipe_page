@@ -9,6 +9,7 @@ import 'package:recipe_page/widgets/atoms/app_paragraph.dart';
 import 'package:recipe_page/widgets/atoms/app_subtitle.dart';
 import 'package:recipe_page/widgets/atoms/app_title.dart';
 import 'package:recipe_page/widgets/atoms/bullet_dot.dart';
+import 'package:recipe_page/widgets/atoms/labeled_text.dart';
 import 'package:recipe_page/widgets/atoms/list_item.dart';
 import 'package:recipe_page/widgets/molecules/list_items.dart';
 import 'package:recipe_page/widgets/molecules/list_section.dart';
@@ -69,11 +70,12 @@ class RecipeCard extends StatelessWidget {
                               ListItems(
                                 items: [
                                   for (final time in recipe.preparationTime)
-                                    Text(
-                                      '${time.description}: ${time.time} min',
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.titleMedium,
+                                    ListItem(
+                                      listMarker: BulletDot(),
+                                      child: LabeledText(
+                                        label: time.description,
+                                        content: time.time,
+                                      ),
                                     ),
                                 ],
                               ),
