@@ -4,6 +4,7 @@ import 'package:recipe_page/domain/usecases/get_local_recipe.dart';
 import 'package:recipe_page/models/recipe.dart';
 import 'package:recipe_page/theme/colors.dart';
 import 'package:recipe_page/theme/sizes.dart';
+import 'package:recipe_page/theme/text_styles.dart';
 import 'package:recipe_page/widgets/atoms/app_paragraph.dart';
 import 'package:recipe_page/widgets/atoms/app_subtitle.dart';
 import 'package:recipe_page/widgets/atoms/app_title.dart';
@@ -34,6 +35,7 @@ class RecipeCard extends StatelessWidget {
         }
 
         return Card(
+          color: AppColor.white,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -48,6 +50,37 @@ class RecipeCard extends StatelessWidget {
                       AppTitle(label: recipe.title),
                       SizedBox(height: AppSpacing.sp300),
                       AppParagraph(label: recipe.description),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        elevation: 0,
+                        color: AppColor.rose50,
+                        child: Padding(
+                          padding: const EdgeInsets.all(AppSpacing.sp300),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Preparation Time',
+                                style: Theme.of(context).textTheme.textPreset3,
+                              ),
+                              SizedBox(height: AppSpacing.sp200),
+                              ListItems(
+                                items: [
+                                  for (final time in recipe.preparationTime)
+                                    Text(
+                                      '${time.description}: ${time.time} min',
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.titleMedium,
+                                    ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       SizedBox(height: AppSpacing.sp400),
                       ListSection(
                         title: AppSubtitle(label: 'Ingredients'),

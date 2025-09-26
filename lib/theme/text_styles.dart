@@ -26,6 +26,7 @@ extension TextStyles on TextTheme {
     fontWeight: FontWeight.w600,
     height: 1,
     letterSpacing: 0,
+    color: AppColor.rose800,
     fontFamily: 'Outfit',
   );
 
@@ -35,7 +36,7 @@ extension TextStyles on TextTheme {
     height: 1.5,
     letterSpacing: 0,
     fontFamily: 'Outfit',
-    color: AppColor.stone600
+    color: AppColor.stone600,
   );
 
   TextStyle get textPreset4Bold => const TextStyle(
@@ -44,6 +45,6 @@ extension TextStyles on TextTheme {
     height: 1.5,
     letterSpacing: 0,
     fontFamily: 'Outfit',
-    color: AppColor.stone600
+    color: AppColor.stone600,
   );
 }
